@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Palatino Linotype", Palatino, serif;
+  --font-sans: "Outfit", "Segoe UI", sans-serif;
+  --color-ink: #0b1726;
+  --color-navy: #16324a;
+  --color-deep: #071018;
+  --color-gold: #e0b15a;
+  --color-gold-deep: #c4923a;
+  --color-foam: #f4efe6;
+  --color-cream: #fbf7f1;
+  --color-forest: #1b7a4e;
+  --color-clay: #a33b3b;
+  --color-mist: #5e6a75;
+  --color-line: #e4d9c8;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f4efe6;
+  color: #1a2330;
+  font-family: var(--font-sans);
+  text-align: left;
+}
+
+#root {
+  border: 0;
+  display: block;
+  text-align: left;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: #e0b15a;
+  color: #0b1726;
+}
+
+:focus-visible {
+  outline: 2px solid #e0b15a;
+  outline-offset: 3px;
+}
+
+.shell {
+  width: 100%;
+  padding-inline: clamp(1rem, 2.4vw, 2.5rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.72rem 1.15rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-gold {
+  background: #e0b15a;
+  color: #0b1726;
+}
+
+.btn-gold:hover {
+  background: #f0c57a;
+  box-shadow: 0 12px 28px rgba(224, 177, 90, 0.32);
+}
+
+.btn-ink {
+  background: #0b1726;
+  color: #fbf7f1;
+}
+
+.btn-ink:hover {
+  background: #16324a;
+  box-shadow: 0 12px 28px rgba(11, 23, 38, 0.22);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(251, 247, 241, 0.45);
+  background: rgba(251, 247, 241, 0.08);
+  color: #fbf7f1;
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(251, 247, 241, 0.16);
+}
+
+.btn-line {
+  border: 1px solid #e4d9c8;
+  background: #fff;
+  color: #0b1726;
+}
+
+.btn-line:hover {
+  border-color: #e0b15a;
+  box-shadow: 0 10px 24px rgba(11, 23, 38, 0.08);
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  color: rgba(251, 247, 241, 0.82);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #e0b15a;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, -16px, 0);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--tilt, 0deg));
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade {
+  animation: fade 0.45s ease both;
+}
+
+.animate-drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+.animate-floaty {
+  animation: floaty 6.5s ease-in-out infinite;
+}
+
+.animate-menu {
+  animation: menu-in 0.28s ease both;
+}
+
+.delay-1 {
+  animation-delay: 0.12s;
+}
+.delay-2 {
+  animation-delay: 0.24s;
+}
+.delay-3 {
+  animation-delay: 0.36s;
+}
+.delay-4 {
+  animation-delay: 0.48s;
+}
+
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
